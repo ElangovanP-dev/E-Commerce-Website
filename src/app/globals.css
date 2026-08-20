@@ -1,0 +1,224 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* ==========================================================================
+   THE 8-THEME DYNAMIC COLOR PALETTES (CSS VARIABLES)
+   ========================================================================== */
+
+/* 1. Midnight Obsidian (Default Luxury Dark) */
+:root,
+[data-theme="midnight-obsidian"] {
+  --color-bg: #090A0F;
+  --color-fg: #F8FAFC;
+  --color-card: #12151E;
+  --color-card-fg: #F8FAFC;
+  --color-popover: #161A26;
+  --color-popover-fg: #F8FAFC;
+  --color-primary: #D4AF37; /* 24k Gold */
+  --color-primary-fg: #090A0F;
+  --color-secondary: #1E2332;
+  --color-secondary-fg: #E2E8F0;
+  --color-accent: #F59E0B;
+  --color-accent-fg: #090A0F;
+  --color-muted: #1A1E2C;
+  --color-muted-fg: #94A3B8;
+  --color-border: #2A3042;
+  --color-input: #1A1E2C;
+  --color-ring: #D4AF37;
+  --radius: 0.75rem;
+  color-scheme: dark;
+}
+
+/* 2. Nordic Frost (Clean Modern Light) */
+[data-theme="nordic-frost"] {
+  --color-bg: #F8FAFC;
+  --color-fg: #0F172A;
+  --color-card: #FFFFFF;
+  --color-card-fg: #0F172A;
+  --color-popover: #FFFFFF;
+  --color-popover-fg: #0F172A;
+  --color-primary: #0284C7; /* Electric Icy Blue */
+  --color-primary-fg: #FFFFFF;
+  --color-secondary: #E2E8F0;
+  --color-secondary-fg: #0F172A;
+  --color-accent: #38BDF8;
+  --color-accent-fg: #0F172A;
+  --color-muted: #F1F5F9;
+  --color-muted-fg: #64748B;
+  --color-border: #E2E8F0;
+  --color-input: #FFFFFF;
+  --color-ring: #0284C7;
+  --radius: 0.75rem;
+  color-scheme: light;
+}
+
+/* 3. Emerald Botanical (Organic Elegance) */
+[data-theme="emerald-botanical"] {
+  --color-bg: #062319;
+  --color-fg: #ECFDF5;
+  --color-card: #093325;
+  --color-card-fg: #ECFDF5;
+  --color-popover: #0C3E2E;
+  --color-popover-fg: #ECFDF5;
+  --color-primary: #10B981; /* Emerald Green */
+  --color-primary-fg: #062319;
+  --color-secondary: #0D4735;
+  --color-secondary-fg: #D1FAE5;
+  --color-accent: #F59E0B; /* Honey Gold */
+  --color-accent-fg: #062319;
+  --color-muted: #0A3A2A;
+  --color-muted-fg: #A7F3D0;
+  --color-border: #135540;
+  --color-input: #093325;
+  --color-ring: #10B981;
+  --radius: 0.75rem;
+  color-scheme: dark;
+}
+
+/* 4. Sunset Terracotta (Warm Artisanal) */
+[data-theme="sunset-terracotta"] {
+  --color-bg: #FFFBEB;
+  --color-fg: #2A1810;
+  --color-card: #FFFFFF;
+  --color-card-fg: #2A1810;
+  --color-popover: #FFFFFF;
+  --color-popover-fg: #2A1810;
+  --color-primary: #EA580C; /* Terracotta Coral */
+  --color-primary-fg: #FFFFFF;
+  --color-secondary: #FEF3C7;
+  --color-secondary-fg: #78350F;
+  --color-accent: #D97706;
+  --color-accent-fg: #FFFFFF;
+  --color-muted: #FEF3C7;
+  --color-muted-fg: #92400E;
+  --color-border: #FDE68A;
+  --color-input: #FFFFFF;
+  --color-ring: #EA580C;
+  --radius: 0.75rem;
+  color-scheme: light;
+}
+
+/* 5. Cyber Neon (Futuristic Pulse) */
+[data-theme="cyber-neon"] {
+  --color-bg: #0B071A;
+  --color-fg: #F4F4F5;
+  --color-card: #150E30;
+  --color-card-fg: #F4F4F5;
+  --color-popover: #1C133E;
+  --color-popover-fg: #F4F4F5;
+  --color-primary: #EC4899; /* Neon Magenta */
+  --color-primary-fg: #0B071A;
+  --color-secondary: #271A52;
+  --color-secondary-fg: #F4F4F5;
+  --color-accent: #06B6D4; /* Hyper Cyan */
+  --color-accent-fg: #0B071A;
+  --color-muted: #1F1545;
+  --color-muted-fg: #A1A1AA;
+  --color-border: #3B287B;
+  --color-input: #150E30;
+  --color-ring: #EC4899;
+  --radius: 0.5rem;
+  color-scheme: dark;
+}
+
+/* 6. Sandstone Japandi (Minimal Warmth) */
+[data-theme="sandstone-japandi"] {
+  --color-bg: #F5F2EB;
+  --color-fg: #1C1917;
+  --color-card: #EFECE6;
+  --color-card-fg: #1C1917;
+  --color-popover: #EFECE6;
+  --color-popover-fg: #1C1917;
+  --color-primary: #44403C; /* Charcoal Slate */
+  --color-primary-fg: #F5F2EB;
+  --color-secondary: #E7E2D8;
+  --color-secondary-fg: #1C1917;
+  --color-accent: #B45309; /* Subtle Clay */
+  --color-accent-fg: #FFFFFF;
+  --color-muted: #E7E2D8;
+  --color-muted-fg: #78716C;
+  --color-border: #D6CEC2;
+  --color-input: #EFECE6;
+  --color-ring: #44403C;
+  --radius: 0.25rem;
+  color-scheme: light;
+}
+
+/* 7. Deep Ocean Abyss (Marine Tech) */
+[data-theme="deep-ocean-abyss"] {
+  --color-bg: #021B35;
+  --color-fg: #F0F9FF;
+  --color-card: #062B52;
+  --color-card-fg: #F0F0FF;
+  --color-popover: #0A3666;
+  --color-popover-fg: #F0F0FF;
+  --color-primary: #14B8A6; /* Seafoam Teal */
+  --color-primary-fg: #021B35;
+  --color-secondary: #0D457C;
+  --color-secondary-fg: #E0F2FE;
+  --color-accent: #3B82F6; /* Luminescent Blue */
+  --color-accent-fg: #FFFFFF;
+  --color-muted: #0B3E74;
+  --color-muted-fg: #7DD3FC;
+  --color-border: #145091;
+  --color-input: #062B52;
+  --color-ring: #14B8A6;
+  --radius: 0.75rem;
+  color-scheme: dark;
+}
+
+/* 8. Classic Editorial Monolith (High-Contrast Print) */
+[data-theme="classic-editorial"] {
+  --color-bg: #FFFFFF;
+  --color-fg: #000000;
+  --color-card: #F4F4F4;
+  --color-card-fg: #000000;
+  --color-popover: #FFFFFF;
+  --color-popover-fg: #000000;
+  --color-primary: #E11D48; /* Crimson Red */
+  --color-primary-fg: #FFFFFF;
+  --color-secondary: #E5E5E5;
+  --color-secondary-fg: #000000;
+  --color-accent: #000000;
+  --color-accent-fg: #FFFFFF;
+  --color-muted: #F4F4F4;
+  --color-muted-fg: #525252;
+  --color-border: #000000;
+  --color-input: #FFFFFF;
+  --color-ring: #E11D48;
+  --radius: 0px;
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(var(--color-card), 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
