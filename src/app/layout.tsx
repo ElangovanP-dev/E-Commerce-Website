@@ -11,7 +11,7 @@ import { QuickViewModal } from '@/components/common/QuickViewModal'
 import { SizeGuideModal } from '@/components/pdp/SizeGuideModal'
 
 export const metadata: Metadata = {
-  title: 'AURALUXE | Premier Full-Stack E-Commerce Platform',
+  title: 'Vesper Luxe | Full-Stack Multi-Themed Luxury Marketplace',
   description: 'Ultra-responsive Awwwards-grade luxury e-commerce experience featuring 8 visual themes, real-time search, multi-step Stripe checkout, and executive admin command center.',
 }
 

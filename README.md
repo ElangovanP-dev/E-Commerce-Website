@@ -1,6 +1,6 @@
-# 👑 AURALUXE | Premier Full-Stack E-Commerce Platform
+# 💎 Vesper Luxe | Full-Stack Multi-Themed Luxury Marketplace
 
-A production-ready, ultra-responsive, Awwwards-caliber Full-Stack E-Commerce platform built with **Next.js 15**, **React 19**, **Prisma ORM**, **Tailwind CSS**, **Auth.js v5**, **Stripe API**, and **Zustand**.
+A production-ready, ultra-responsive, Awwwards-caliber Full-Stack E-Commerce platform built with **Next.js 15**, **React 19**, **Prisma ORM**, **MySQL**, **Tailwind CSS**, **Auth.js v5**, **Stripe API**, and **Zustand**.
 
 ---
 

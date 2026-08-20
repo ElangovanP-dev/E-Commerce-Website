@@ -73,7 +73,7 @@ export function Footer() {
               <Crown className="w-5 h-5" />
             </div>
             <span className="font-extrabold text-xl tracking-wider text-foreground">
-              AURA<span className="text-primary font-normal">LUXE</span>
+              VESPER <span className="text-primary font-normal">LUXE</span>
             </span>
           </div>
           <p className="text-xs text-muted-fg leading-relaxed max-w-sm">
@@ -155,7 +155,7 @@ export function Footer() {
       {/* Bottom Copyright */}
       <div className="border-t border-border/60 py-6 text-center text-xs text-muted-fg">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} AURALUXE E-Commerce Platform. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Vesper Luxe Marketplace. All rights reserved.</p>
           <div className="flex space-x-6 text-[11px]">
             <span className="hover:underline cursor-pointer">Privacy Policy</span>
             <span className="hover:underline cursor-pointer">Terms of Service</span>

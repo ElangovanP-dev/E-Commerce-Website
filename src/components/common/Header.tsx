@@ -48,10 +48,10 @@ export function Header() {
             </div>
             <div className="flex flex-col">
               <span className="font-extrabold text-lg sm:text-xl tracking-wider text-foreground leading-none">
-                AURA<span className="text-primary font-normal">LUXE</span>
+                VESPER <span className="text-primary font-normal">LUXE</span>
               </span>
               <span className="text-[9px] uppercase tracking-widest text-muted-fg font-medium">
-                Premier Platform
+                Luxury Marketplace
               </span>
             </div>
           </Link>
