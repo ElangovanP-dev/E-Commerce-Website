@@ -1,12 +1,33 @@
 import { ProductGrid } from '@/components/common/ProductGrid'
 import { FilterSidebar } from '@/components/common/FilterSidebar'
+import { prisma } from '@/lib/db'
+import { Product } from '@/types'
 
 export const metadata = {
   title: 'All Handcrafted Products | VEDA & CO.',
   description: 'Explore authentic Indian heritage brassware, Pashmina wool shawls, sandalwood scents, Banarasi silk kurtas, and handcrafted leather duffels.',
 }
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  let products: Product[] = []
+  try {
+    const dbProducts = await prisma.product.findMany({
+      include: {
+        category: true,
+        variants: true,
+      },
+      take: 50,
+    })
+    if (dbProducts && dbProducts.length > 0) {
+      products = dbProducts.map((p) => ({
+        ...p,
+        images: JSON.parse(p.images as string),
+      })) as Product[]
+    }
+  } catch (e) {
+    console.warn('Prisma products query fallback:', e)
+  }
+
   return (
     <main className="min-h-screen bg-slate-50 py-8 sm:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -25,7 +46,7 @@ export default function ProductsPage() {
         </div>
 
         {/* Product Catalog Grid */}
-        <ProductGrid />
+        <ProductGrid products={products} />
 
         {/* Filter Drawer */}
         <FilterSidebar />

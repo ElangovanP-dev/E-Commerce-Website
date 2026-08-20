@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { ShoppingBag, ArrowRight, Trash2, ArrowLeft } from 'lucide-react'
+import Image from 'next/image'
+import { ShoppingBag, ArrowRight, Trash2, ArrowLeft, Plus, Minus } from 'lucide-react'
 import { useCartStore } from '@/store/useCartStore'
 import { formatCurrency } from '@/lib/utils'
 
@@ -47,36 +48,46 @@ export default function CartPage() {
             
             {/* Items List */}
             <div className="lg:col-span-2 space-y-4">
-              {items.map((item) => (
-                <div key={`${item.productId}-${item.variantId}`} className="bg-white border border-slate-200 rounded-2xl p-4 flex items-center justify-between gap-4 shadow-sm">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden relative shrink-0">
-                      {/* Product Image */}
-                      {item.image && (
-                        <img src={item.image} alt={item.title} className="object-cover w-full h-full" />
-                      )}
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-xs text-[#0F2C59] line-clamp-1">{item.title}</h4>
-                      <p className="text-[11px] text-slate-500 font-medium">{item.variantName || 'Standard'}</p>
-                      <span className="text-xs font-black text-[#EA580C] mt-1 block">{formatCurrency(item.price)}</span>
-                    </div>
-                  </div>
+              {items.map((item) => {
+                const images = Array.isArray(item.product.images)
+                  ? item.product.images
+                  : JSON.parse(item.product.images || '[]')
+                const thumbnail = images[0] || 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=300&q=80'
 
-                  <div className="flex items-center space-x-4">
-                    {/* Quantity Selector */}
-                    <div className="flex items-center border border-slate-200 rounded-xl overflow-hidden text-xs font-bold bg-slate-50">
-                      <button onClick={() => updateQuantity(item.productId, item.quantity - 1, item.variantId)} className="px-2.5 py-1 hover:bg-slate-200 text-slate-700">-</button>
-                      <span className="px-3 py-1 bg-white">{item.quantity}</span>
-                      <button onClick={() => updateQuantity(item.productId, item.quantity + 1, item.variantId)} className="px-2.5 py-1 hover:bg-slate-200 text-slate-700">+</button>
+                return (
+                  <div key={item.id} className="bg-white border border-slate-200 rounded-2xl p-4 flex items-center justify-between gap-4 shadow-sm">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-16 h-16 rounded-xl bg-slate-100 border border-slate-200 overflow-hidden relative shrink-0">
+                        <Image src={thumbnail} alt={item.product.title} fill className="object-cover" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-xs text-[#0F2C59] line-clamp-1">{item.product.title}</h4>
+                        <p className="text-[11px] text-slate-500 font-medium">
+                          {item.selectedColor} {item.selectedSize ? `(${item.selectedSize})` : ''}
+                        </p>
+                        <span className="text-xs font-black text-[#EA580C] mt-1 block">{formatCurrency(item.unitPrice)}</span>
+                      </div>
                     </div>
 
-                    <button onClick={() => removeItem(item.productId, item.variantId)} className="p-2 text-slate-400 hover:text-red-500 transition-colors">
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                    <div className="flex items-center space-x-4">
+                      {/* Quantity Selector */}
+                      <div className="flex items-center border border-slate-200 rounded-xl overflow-hidden text-xs font-bold bg-slate-50">
+                        <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="px-2.5 py-1 hover:bg-slate-200 text-slate-700">
+                          <Minus className="w-3 h-3" />
+                        </button>
+                        <span className="px-3 py-1 bg-white">{item.quantity}</span>
+                        <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="px-2.5 py-1 hover:bg-slate-200 text-slate-700">
+                          <Plus className="w-3 h-3" />
+                        </button>
+                      </div>
+
+                      <button onClick={() => removeItem(item.id)} className="p-2 text-slate-400 hover:text-red-500 transition-colors">
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
 
             {/* Summary */}
