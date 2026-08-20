@@ -1,11 +1,12 @@
 'use client'
 
+import { Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle2, Download, Package, Truck, Home, Sparkles, Mail, ShieldCheck } from 'lucide-react'
 import { motion } from 'framer-motion'
 
-export default function ConfirmationPage() {
+function ConfirmationContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const orderNumber = searchParams.get('orderNumber') || 'AURA-849201'
@@ -107,5 +108,17 @@ export default function ConfirmationPage() {
         </motion.div>
       </div>
     </main>
+  )
+}
+
+export default function ConfirmationPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-background flex items-center justify-center text-muted-fg font-mono text-sm">
+        Loading confirmation details...
+      </div>
+    }>
+      <ConfirmationContent />
+    </Suspense>
   )
 }
