@@ -3,17 +3,16 @@ import { prisma } from '@/lib/db'
 import { Product } from '@/types'
 
 const CATEGORY_NAMES: Record<string, string> = {
-  'audio-tech': 'Cyber & Audio Tech',
-  'apparel': 'Minimalist Apparel',
-  'timepieces': 'Horology & Timepieces',
-  'home-living': 'Japandi Home Living',
-  'carry-bags': 'Luxury Carry & Bags',
+  'home-decor': 'Heritage Home & Brass',
+  'apparel': 'Handcrafted Silk & Apparel',
+  'wellness': 'Artisanal Scents & Wellness',
+  'leather-bags': 'Premium Leather & Carry',
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params
   const slug = resolvedParams.slug
-  const categoryTitle = CATEGORY_NAMES[slug] || 'Curated Category'
+  const categoryTitle = CATEGORY_NAMES[slug] || 'Curated Artisan Collection'
 
   let products: Product[] = []
   try {
@@ -36,13 +35,13 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   }
 
   return (
-    <main className="min-h-screen bg-background py-10 sm:py-16">
+    <main className="min-h-screen bg-slate-50 py-10 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="border-b border-border pb-6">
-          <span className="text-xs font-bold text-primary uppercase tracking-widest block mb-1">
-            Collection Filter
+        <div className="border-b border-slate-200 pb-6">
+          <span className="text-xs font-black text-[#EA580C] uppercase tracking-widest block mb-1">
+            Artisan Craft Collection
           </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-black text-[#0F2C59] tracking-tight">
             {categoryTitle}
           </h1>
         </div>
